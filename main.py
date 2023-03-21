@@ -74,3 +74,18 @@ if uploaded_file is not None:
         plt.xticks(rotation = 'vertical')
         st.title('Most Common Words')
         st.pyplot(fig)
+
+        # emoji analysisi
+
+        emoji_df = helper.emoji_helper(selected_user, df)
+        st.title('Emoji Analysis')
+        cols1,cols2 = st.columns(2)
+
+        with cols1:
+            st.dataframe(emoji_df)
+        with cols2:
+            fig,ax = plt.subplots()
+            ax.pie(emoji_df[1],labels=emoji_df[0])
+            st.pyplot(fig)
+
+
